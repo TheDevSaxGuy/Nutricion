@@ -6,6 +6,7 @@ const Login =(props)=>{
     const loginFacebook = ()=>{
         auth().signInWithPopup(provider).then(({ user })=>{
             props.history.push('/panel');
+
         })
     }
 
