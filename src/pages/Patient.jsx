@@ -1,13 +1,18 @@
 import React from 'react';
+import PatientInfo from '../components/PatientInfo';
 
-const Patient = ()=>(
+const Patient = props=>{
+console.log('patients');
+const patient = props.location.state;
+return(
     <div className="Patient">
         <div className="Patient-container">
             <div className="Patient-item">
-                <h4>Aqui estan los pacientes</h4>
+                <PatientInfo patient={patient}/>
             </div>
         </div>
     </div>
 );
+}
 
 export  default Patient;

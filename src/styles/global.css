@@ -274,49 +274,49 @@ body {
 .Patients-content i {
   margin: 0 0.2em 0 0;
 }
-.PetInfo-container {
+.PatientInfo-container {
   grid-template-columns: minmax(auto, 1024px);
   display: grid;
   justify-content: center;
 }
-.PetInfo-content {
+.PatientInfo-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 3em;
 }
-.PetInfo-name {
+.PatientInfo-name {
   display: flex;
   align-items: center;
 }
-.PetInfo-name h2 {
+.PatientInfo-name h2 {
   margin: 0 .5em 0 0;
 }
-.PetInfo-name span {
+.PatientInfo-name span {
   font-size: 20px;
 }
-.PetInfo-avatar img {
+.PatientInfo-avatar img {
   border-radius: 12px;
   width: 100%;
   height: auto;
 }
-.PetInfo-item h4 {
+.PatientInfo-item h4 {
   margin: .5em 0;
 }
-.PetInfo-item {
+.PatientInfo-item {
   margin: .5em 0;
 }
-.PetInfo-item span {
+.PatientInfo-item span {
   font-size: 16px;
   font-weight: 300;
 }
-.PetInfo-item a {
+.PatientInfo-item a {
   text-decoration: none;
   color: #8c93bd;
 }
-.PetInfo-item i {
+.PatientInfo-item i {
   margin: 0 .5em 0 0;
 }
-.PetInfo-btn {
+.PatientInfo-btn {
   width: 200px;
   background-image: linear-gradient(150deg, #4545f5, #37dcff);
   color: #fff;
