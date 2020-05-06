@@ -1,10 +1,9 @@
 import React,{useState} from 'react';
+import {connect} from 'react-redux';
 import {storage, database }from '../utils/firebase';
-const Form =()=>{
+const Form =props =>{
     const [patientPhoto,setPatientPhoto]=useState('');
     const [sendForm,setSendForm]= useState(false);
-    console.log('Form');
-    console.log('paciente',patientPhoto);
     const handleSubmit=event=>{
         console.log('foto',patientPhoto);
         event.preventDefault();
@@ -19,11 +18,11 @@ const Form =()=>{
             'description':form.get('description'),
             'gender': form.get('gender'),
             'photo': patientPhoto,
-            'profilePic':'',
-            'userContact':'',
-            'userName':'',
+            'profilePic':props.user.photoURL,
+            'userContact':props.user.email,
+            'userName':props.user.displayName,
+            'Measures':[{peso:form.get('initialWeight'),Medida:1}],
         }
-        console.log(data)
         database.ref('patients').push(data).then(() => setSendForm(true)).catch(()=>setSendForm(false))
     }
 
@@ -70,6 +69,7 @@ const Form =()=>{
                         Mujer
                     </option>
                 </select>
+                <input name="initialWeight" type="text" placeholder="Peso Inicial"/> 
                 <input name="description" type="text" placeholder="Notas"/>
                 <input type="file" name="photo" onChange={onChange}/>
                 <button>Enviar</button>
@@ -80,5 +80,10 @@ const Form =()=>{
     </div>
 
 );
-    }
-export default Form;
+}
+const mapStateToProps = state =>{
+    return{
+        user: state.user,    }
+}
+
+export default connect(mapStateToProps)(Form);

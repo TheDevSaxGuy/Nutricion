@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 const Footer = () =>(
     <div className="Footer">
         <div className="Footer-container">
@@ -8,7 +8,8 @@ const Footer = () =>(
                     Manzana
                 </div>
                 <div className="Footer-social">
-                    Social
+                    <Link to="/social">Social</Link>
+                    
                 </div>
             </div>
         </div>
