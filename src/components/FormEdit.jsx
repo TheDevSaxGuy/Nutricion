@@ -1,7 +1,10 @@
 import React,{useState} from 'react';
 import {connect} from 'react-redux';
 import {storage, database }from '../utils/firebase';
+
 const Form =props =>{
+    const patient = props.location.patient;
+    console.log('Paciente',patient)
     const [patientPhoto,setPatientPhoto]=useState('');
     const [sendForm,setSendForm]= useState(false);
     const handleSubmit=event=>{
@@ -9,7 +12,6 @@ const Form =props =>{
         event.preventDefault();
         const form  = new FormData(event.target);
         const newDate = new Date().toISOString();
-        const id= newDate.toString().replace(/T|-|:|Z/g,'');
 
         const data = {
             'firstName':form.get('firstName'),
@@ -23,11 +25,8 @@ const Form =props =>{
             'userContact':props.user.email,
             'userName':props.user.displayName,
             'Measures':[{peso:form.get('initialWeight'),Medida:1}],
-            'id':id,
         }
-        id!=''?
-        database.ref('patients').push(data).then(() => setSendForm(true)).catch(()=>setSendForm(false)):
-        console.log('Error guardando')
+        database.ref('patients').push(data).then(() => setSendForm(true)).catch(()=>setSendForm(false))
     }
 
     const onChange = event =>{
@@ -46,7 +45,7 @@ const Form =props =>{
     return(
     <div className="Form">
         <div className="Form-head">
-            <h2> Dar de alta  </h2>
+            <h2> Editar información  </h2>
         </div>
         {sendForm&&
         <div className="Form-sent">

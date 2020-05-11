@@ -8,7 +8,7 @@ const Footer = () =>(
                     Manzana
                 </div>
                 <div className="Footer-social">
-                    <Link to="/social">Social</Link>
+                    <Link to="/social" style={{textDecoration:'none'}}>Social</Link>
                     
                 </div>
             </div>

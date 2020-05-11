@@ -10,6 +10,7 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Patient from '../pages/Patient';
 import Social from '../pages/Social';
+import FormEdit from '../components/FormEdit';
 import '../styles/global.css';
 
 
@@ -30,6 +31,7 @@ return(
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route exact path="/pacientes/:id" component={Patient}/>
+        <Route exact path="/pacientes/editar/:id" component={FormEdit}/>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/panel" component={Dashboard} />
         <Route exact path="/social" component={Social} />

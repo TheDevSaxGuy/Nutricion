@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import moment from 'moment';
+
 const PatientItem = props =>{
     moment.locale('es');
     const date = moment(props.patient.date, 'YYYYMMDD').fromNow();

@@ -87,6 +87,7 @@ body {
 .Login {
   padding: 1em;
   text-align: center;
+  background-color: white;
 }
 .Login-container {
   grid-template-columns: minmax(auto, 640px);
@@ -449,4 +450,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+}
+a{
+  color: blue;
 }
