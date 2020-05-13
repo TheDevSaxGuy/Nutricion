@@ -16,16 +16,16 @@ const PatientItem = props =>{
         const gender = patient.gender;
         const type = patient.type;
         switch (type) {
-            case 'Child':
-                if(gender=='Male')  
+            case 'Nino':
+                if(gender=='Hombre')  
                 {return '👦';}
                 else{return '👧';}
-            case 'Teen' :  
-                if(gender=='Male')
-                {return '🧑';}
-                else{return '🧒';}
-            case 'Adult':  
-                if(gender=='Male')
+            case 'Adolescente' :  
+                if(gender=='Mujer')
+                {return '🧒';}
+                else{return '🧑';}
+            case 'Adulto':  
+                if(gender=='Hombre')
                 {return '👨';}
                 else{return '👩'; }  
             default:
@@ -51,8 +51,8 @@ const PatientItem = props =>{
 <h2>
     {props.patient.firstName} {props.patient.lastName} </h2>
         <i>
-            {props.patient.gender==='Male' &&'♂'}
-            {props.patient.gender==='Female'&&'♀'}
+            {props.patient.gender==='Hombre' &&'♂'}
+            {props.patient.gender==='Mujer'&&'♀'}
         </i>
         </div>
     <p>{props.patient.description}</p>

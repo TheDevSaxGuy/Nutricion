@@ -2,7 +2,9 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
-const Nav =props =>(
+const Nav =props =>{
+console.log('props en nav',props)
+return(   
     <div className="Nav">
         <ul>
             <li>
@@ -22,6 +24,7 @@ const Nav =props =>(
 
     </div>
 );
+}
 
 const mapstateToProps= state =>{
     return{

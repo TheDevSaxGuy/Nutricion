@@ -3,6 +3,9 @@ import Login from '../pages/Login';
 import Modal from '../components/Modal';
 import {Link} from 'react-router-dom'; 
 import FormEdit from '../components/FormEdit';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
+
 
 const PatientInfo = props =>{
     let showEdit= false;
@@ -20,16 +23,16 @@ const PatientInfo = props =>{
         const gender = patient.gender;
         const type = patient.type;
         switch (type) {
-            case 'Child':
-                if(gender=='Male')  
+            case 'Nino':
+                if(gender=='Hombre')  
                 {return '👦';}
                 else{return '👧';}
-            case 'Teen' :  
-                if(gender=='Male')
+            case 'Adolescente' :  
+                if(gender=='Hombre')
                 {return '🧑';}
                 else{return '🧒';}
-            case 'Adult':  
-                if(gender=='Male')
+            case 'Adulto':  
+                if(gender=='Hombre')
                 {return '👨';}
                 else{return '👩'; }  
             default:
@@ -37,27 +40,32 @@ const PatientInfo = props =>{
         }
     }
     return(
-    <div className="PatientInfo">
-        <div className="PatientInfo-container">
-            <div className="PatientInfo-content">
-            <div className="PatientInfo-avatar">
-                <img src={props.patient.photo} alt=""/>
-            </div>
-            <div className="PatientInfo-profile">
-                <h2>{props.patient.firstName} {props.patient.lastName}</h2>
-                <span>
-                {emoji(props.patient)}
-                </span>
-                <p>{props.patient.description}
-                <i>
-                {props.patient.gender==='Male' &&'♂'}
-                {props.patient.gender==='Female'&&'♀'}
-                </i></p>
+    <div className="Tabs-container">
+    <Tabs>
+        <TabList>
+                <Tab title="Paciente"> Hola </Tab>
+                <Tab title="Editar Informacion"> Edit</Tab>
+        </TabList>
+        <TabPanel>    
+        <div className="PatientInfo">
+            <div className="PatientInfo-container">
+                <div className="PatientInfo-content">
+                    <div className="PatientInfo-avatar">
+                        <img src={props.patient.photo} alt=""/>
+                    </div>
+                <div className="PatientInfo-profile">
+                    <h2>{props.patient.firstName} {props.patient.lastName}</h2>
+                    <span>{emoji(props.patient)}</span>
+                    <p>{props.patient.description}
+                    <i>
+                    {props.patient.gender==='Male' &&'♂'}
+                    {props.patient.gender==='Female'&&'♀'}
+                    </i>
+                    </p>
                 <div className="PatientInfo-type">
-                <button className="PatientInfo-btn" onClick={medidas}>
-                    Tomar medidas
-                </button>
-                
+                    <button className="PatientInfo-btn" onClick={medidas}>
+                        Tomar medidas
+                    </button>
                 </div>
                 {
                 props.login ?
@@ -75,23 +83,20 @@ const PatientInfo = props =>{
                     <Login/>
                 </div>
                 }
-                {console.log('paciente en Info',props.patient)}
-                   <Link  to ={{
-                        pathname:`/pacientes/editar/${props.patient.firstName}-${props.patient.lastName}`,
-                        patient:props.patient}}>
-                    Editar
 
-                   </Link>
-                        
-                   
-                
-
-            </div>
-           
-            
+            </div>        
             </div>
         </div>
-    </div>)
+        </div>
+            
+            </TabPanel>
+            <TabPanel>
+                <FormEdit patient={props.patient}/>
+            </TabPanel>
+    
+    </Tabs>
+    </div>
+    )
 
 }
 

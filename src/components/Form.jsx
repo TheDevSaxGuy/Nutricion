@@ -9,8 +9,9 @@ const Form =props =>{
         event.preventDefault();
         const form  = new FormData(event.target);
         const newDate = new Date().toISOString();
-        const id= newDate.toString().replace(/T|-|:|Z/g,'');
-
+        let id= newDate.toString().replace(/T|-|:|Z/g,'')
+        id = id.substring(0,id.length-4);
+        
         const data = {
             'firstName':form.get('firstName'),
             'lastName':form.get('lastName'),
@@ -26,7 +27,7 @@ const Form =props =>{
             'id':id,
         }
         id!=''?
-        database.ref('patients').push(data).then(() => setSendForm(true)).catch(()=>setSendForm(false)):
+        database.ref('patients/'+id).set(data).then(() => setSendForm(true)).catch(()=>setSendForm(false)):
         console.log('Error guardando')
     }
 
@@ -60,16 +61,16 @@ const Form =props =>{
                 <input name="lastName" type="text" placeholder="Apellido del paciente"/>
                 <select name="type">
                     <option disable="true" value="seleccionar">Seleccionar</option>
-                    <option value="Child">Niño</option>
-                    <option value="Teen">
+                    <option value="Nino">Niño</option>
+                    <option value="Adolescente">
                         Adolescente
                     </option>
-                    <option value="Adult">Adulto</option>
+                    <option value="Adulto">Adulto</option>
                 </select>
                 <select name="gender">
                     <option disable="true" value ="seleccionar">Seleccionar</option>
-                    <option value="Male">Hombre</option>
-                    <option value="Female">
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">
                         Mujer
                     </option>
                 </select>
@@ -79,12 +80,11 @@ const Form =props =>{
                 <button>Enviar</button>
             </form>
         </div>
-}
-
+        }
     </div>
-
 );
 }
+
 const mapStateToProps = state =>{
     return{
         user: state.user,    }

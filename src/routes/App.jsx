@@ -1,4 +1,5 @@
 import React, {useEffect}from 'react';
+import ReactDOM from 'react-dom';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {auth} from '../utils/firebase';
@@ -15,7 +16,7 @@ import '../styles/global.css';
 
 
 const App = props => {
-
+  console.log('props en App',props);
   useEffect(()=>{
     auth().onAuthStateChanged((user)=>{
       if(user){
@@ -36,7 +37,6 @@ return(
         <Route exact path="/panel" component={Dashboard} />
         <Route exact path="/social" component={Social} />
         <Route component={NotFound} />
-
       </Switch>
     </Layout>
   

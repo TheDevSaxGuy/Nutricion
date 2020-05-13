@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import { auth } from '../utils/firebase';
 
 const Dashboard =props=>{
-
+    console.log(props);
     const logoutFacebook =()=>{
         auth().signOut().
         then(()=>{
@@ -48,7 +48,7 @@ const mapDispatchToProps={
 }
 
 const mapStateToProps= state =>{
-    console.log('map',state);
+    console.log('Dashboard state',state);
     return {user: state.user};
 }
 

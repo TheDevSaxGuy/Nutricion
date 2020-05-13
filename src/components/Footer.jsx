@@ -9,7 +9,6 @@ const Footer = () =>(
                 </div>
                 <div className="Footer-social">
                     <Link to="/social" style={{textDecoration:'none'}}>Social</Link>
-                    
                 </div>
             </div>
         </div>
